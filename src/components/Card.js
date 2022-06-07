@@ -5,7 +5,7 @@ const Card = ({person}) => {
     return(
         <div className="card" onClick={handleClick}>
             <div className="card-image-container">
-                <img src="https://www.rockandpop.cl/wp-content/uploads/2019/12/mandamientos-baby-yoda.jpg" alt="Character Image"/>
+                <img src="https://www.rockandpop.cl/wp-content/uploads/2019/12/mandamientos-baby-yoda.jpg" alt="Character"/>
             </div>
             <div className="card-details-container">
                 <h4>{person.name}</h4>
