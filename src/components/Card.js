@@ -9,8 +9,8 @@ const Card = ({person}) => {
             </div>
             <div className="card-details-container">
                 <h4>{person.name}</h4>
-                <p>{"Birthday: "+person.birth_year}</p>
-                <p>{"Gender: "+person.gender}</p>
+                <p>{"Birthday: "+person.birth_year.toUpperCase()}</p>
+                <p>{"Gender: "+person.gender.toUpperCase()}</p>
             </div>
         </div>
     )
