@@ -11,7 +11,7 @@ const Navbar = () => {
     return(
         <nav className="navbar">
             <div className="logo" onClick={handleClick}>
-                <img src={logo} />
+                <img src={logo} alt="Star Wars Logo"/>
             </div>
         </nav>
     )

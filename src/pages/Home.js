@@ -13,7 +13,7 @@ const Home = () => {
         <div className="home">
             <Navbar navigate={navigate}/>
             <h1 className="home-title">Welcome to the</h1>
-            <img className="home-image" src={logo}/>
+            <img className="home-image" src={logo} alt="Star Wars Logo"/>
             <h1 className="home-title">API</h1>
             <button className="home-button" onClick={handleClick}>Begin the journey</button>
         </div>
