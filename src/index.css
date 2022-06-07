@@ -159,6 +159,10 @@ html, body {
   background: transparent;
   margin: 8px;
   border: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .people .people-container .people-controls .people-button:hover{
