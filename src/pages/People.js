@@ -7,7 +7,7 @@ const People = () => {
     const [data,setData] = useState([])
     const [nextUrl,setNextUrl] = useState(null)
     const [previousUrl,setPreviousUrl] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
     const getData = async (url) => {
@@ -17,26 +17,23 @@ const People = () => {
     }
 
     useEffect(() => {
-        setLoading(true)
         getData('https://swapi.dev/api/people/').then(people => {
             setData(people.results)
             setNextUrl(people.next)
             setPreviousUrl(people.previous)
-        }).catch(err => console.log(err)).finally(
-            setLoading(false)
+        })
+        .catch(
+            err => console.log(err)
         )
+        .finally(() => setLoading(false))
     },[])
 
     const handleNextClick = () => {
-        setLoading(true)
         getData(nextUrl).then(people => {
             setData(people.results)
             setNextUrl(people.next)
-            setPreviousUrl(people.previous)
-        }).catch(err => console.log(err)).finally(
-            setLoading(false)
-        )
-
+            setPreviousUrl(people.previous)  
+        }).catch(err => console.log(err)).finally(() => setLoading(false))
     }
 
     const handlePreviousClick = () => {
@@ -44,14 +41,17 @@ const People = () => {
             setData(people.results)
             setNextUrl(people.next)
             setPreviousUrl(people.previous)
-        }).catch(err => console.log(err))
+            setLoading(false)
+        }).catch(err => console.log(err)).finally(() => setLoading(false))
     }
 
     return (
         <div className="people">
             <Navbar />
             {loading &&
-                <div className={ loading ? "loading-screen-active" : "loading-screen"}>
+                <div className="loading-screen-active">
+                    <span className="loading-circle"></span>
+                    <h1>Loading</h1>
                 </div>
             }
             <div className="people-container">

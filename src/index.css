@@ -249,16 +249,41 @@ html, body {
   background-color: black;
   top: var(--navbar-height);
   position: absolute;
+  z-index: 100;
   width: 100%;
   height: calc(100% - var(--navbar-height));
 }
 
 .loading-screen-active{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 100;
-  background-color: black;
-  top: var(--navbar-height);
+  background-color: rgba(0,0,0,0.5);
   position: absolute;
   width: 100%;
-  height: calc(100% - var(--navbar-height));
+  height: calc(100% + var(--navbar-height));
+}
+
+.loading-circle{
+  height: 50px;
+  width: 50px;
+  border: 3px solid var(--start-wars-yellow-color);
+  border-radius: 100%;
+  border-left: 0px;
+  border-right: 0px;
+  animation: loading;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(359deg);
+  }
 }
