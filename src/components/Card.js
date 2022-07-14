@@ -1,7 +1,9 @@
 const Card = ({person}) => {
+
     const handleClick = () => {
         console.log("click");
     }
+
     return(
         <div className="card" onClick={handleClick}>
             <div className="card-image-container">
