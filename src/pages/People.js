@@ -1,12 +1,13 @@
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
-import {useEffect, useState} from "react";
+import CardSkeleton from "../components/CardSkeleton";
+import { useEffect, useState } from "react";
 
 const People = () => {
 
-    const [data,setData] = useState([])
-    const [nextUrl,setNextUrl] = useState(null)
-    const [previousUrl,setPreviousUrl] = useState(null)
+    const [data, setData] = useState([])
+    const [nextUrl, setNextUrl] = useState(null)
+    const [previousUrl, setPreviousUrl] = useState(null)
     const [loading, setLoading] = useState(true)
 
 
@@ -26,17 +27,19 @@ const People = () => {
             err => console.log(err)
         )
         .finally(() => setLoading(false))
-    },[])
+    }, [])
 
     const handleNextClick = () => {
+        setData([])
         getData(nextUrl).then(people => {
             setData(people.results)
             setNextUrl(people.next)
-            setPreviousUrl(people.previous)  
+            setPreviousUrl(people.previous)
         }).catch(err => console.log(err)).finally(() => setLoading(false))
     }
 
     const handlePreviousClick = () => {
+        setData([])
         getData(previousUrl).then(people => {
             setData(people.results)
             setNextUrl(people.next)
@@ -57,11 +60,11 @@ const People = () => {
             <div className="people-container">
                 <h1 className="people-title">Characters</h1>
                 <div className="people-controls">
-                    <button className={previousUrl===null ? "people-button disabled" : "people-button" } onClick={handlePreviousClick} disabled={previousUrl===null}>{"⬅︎"}</button>
+                    <button className={previousUrl === null ? "people-button disabled" : "people-button"} onClick={handlePreviousClick} disabled={previousUrl === null}>{"⬅︎"}</button>
                     <div className="people-card-container">
-                        {data.map((person,index) => (<Card key={index} person={person}/>))}
+                        {data.length !== 0 ? data.map((person, index) => (<Card key={index} person={person} />)) : Array(10).fill().map((index) => <CardSkeleton key={index}/>)}
                     </div>
-                    <button className={nextUrl===null ? "people-button disabled" : "people-button" } onClick={handleNextClick}  disabled={nextUrl===null}>{"➡︎"}</button>
+                    <button className={nextUrl === null ? "people-button disabled" : "people-button"} onClick={handleNextClick} disabled={nextUrl === null}>{"➡︎"}</button>
                 </div>
             </div>
         </div>
