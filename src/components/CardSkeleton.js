@@ -10,7 +10,7 @@ const CardSkeleton = () => {
                 
             </div>
             <div className="card-details-container">
-                <h4 className="skeleton"></h4>
+                <p className="skeleton"></p>
                 <p className="skeleton"></p>
                 <p className="skeleton"></p>
             </div>
